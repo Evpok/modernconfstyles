@@ -1,0 +1,41 @@
+\ProvidesFile{lrec.bbx}
+
+\RequireBibliographyStyle{authoryear}
+\ExecuteBibliographyOptions{uniquename=init, giveninits, doi=false, isbn=false, url=false}
+
+\defbibheading{bibliography}[\refname]{}
+% Name ordering (default is family-given/given-family)
+\DeclareNameAlias{sortname}{family-given}
+% No quotes around titles
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{citetitle}{#1}
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
+\AtEveryBibitem{%
+	\ifentrytype{online}
+		{}
+		{\clearfield{urlyear}\clearfield{urlmonth}\clearfield{urlday}}
+}
+
+% LanguageResource references
+\DeclareFieldFormat{islrn}{ISLRN #1}
+
+\DeclareBibliographyDriver{languageresource}{
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \usebibmacro{author}%
+    \setunit{\printdelim{nametitledelim}}\newblock
+    \usebibmacro{title}%
+    \newunit\newblock
+    \printlist{publisher}%
+    \newunit\newblock
+    \printfield{series}%
+    \newunit\newblock
+	\printfield{edition}
+    \newunit\newblock
+    \printfield{islrn}
+    \newunit\newblock
+    \usebibmacro{url}%
+    \setunit{\bibpagerefpunct}\newblock
+    \usebibmacro{pageref}%
+    \newunit\newblock
+    \usebibmacro{finentry}
+}

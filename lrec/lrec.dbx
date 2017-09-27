@@ -1,0 +1,13 @@
+\DeclareDatamodelEntrytypes{languageresource}
+\DeclareDatamodelFields[type=field, datatype=verbatim]{islrn}
+\DeclareDatamodelEntryfields[languageresource]{
+    author,
+    title,
+    publisher,
+    year,
+    date,
+    series,
+    edition,
+    islrn,
+    url
+}
