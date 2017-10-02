@@ -40,13 +40,29 @@
 	} {%
 		\printnames[byeditor]{editor}%
 		\addcomma\addspace%
-		\ifthenelse{\value{listtotal}>1}{%
+		\ifthenelse{\value{editor}>1}{%
 			\bibstring{editors}%
 		} {%
 			\bibstring{editor}%
 		}%
 		\clearname{editor}%
 	}
+}
+
+\newbibmacro*{byeditor+others+booktitle}{%
+	\ifnameundef{editor}{%
+	} {%
+		\printnames[byeditor]{editor}%
+		\addcomma\addspace%
+		\ifthenelse{\value{editor}>1}{%
+			\bibstring{editors}%
+		} {%
+			\bibstring{editor}%
+		}%
+		\clearname{editor}%
+		\addcomma\addspace%
+	}%
+	\usebibmacro{maintitle+booktitle}%
 }
 
 
@@ -123,9 +139,7 @@
 	\usebibmacro{byauthor}%
 	\newunit\newblock
 	\usebibmacro{in:}%
-	\usebibmacro{byeditor+others}
-	\setunit{\addcomma\addspace}
-	\usebibmacro{maintitle+booktitle}%
+	\usebibmacro{byeditor+others+booktitle}%
 	\setunit{\addcomma\addspace}
 	\usebibmacro{chapter+pages}%
 	\newunit\newblock
@@ -144,6 +158,54 @@
 	\newunit\newblock
 	\printlist{organization}%
 	\newunit
+	\usebibmacro{publisher+location+date}%
+	\newunit\newblock
+	\iftoggle{bbx:isbn}
+	{\printfield{isbn}}
+	{}%
+	\newunit\newblock
+	\usebibmacro{doi+eprint+url}%
+	\newunit\newblock
+	\usebibmacro{addendum+pubstate}%
+	\setunit{\bibpagerefpunct}\newblock
+	\usebibmacro{pageref}%
+	\newunit\newblock
+	\iftoggle{bbx:related}
+	{\usebibmacro{related:init}%
+	 \usebibmacro{related}}
+	{}%
+	\usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{incollection}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author/translator+others}%
+	\setunit{\printdelim{nametitledelim}}\newblock
+	\usebibmacro{title}%
+	\newunit
+	\printlist{language}%
+	\newunit\newblock
+	\usebibmacro{byauthor}%
+	\newunit\newblock
+	\usebibmacro{in:}%
+	\usebibmacro{byeditor+others+booktitle}%
+	\setunit{\addcomma\addspace}
+	\usebibmacro{chapter+pages}%
+	\newunit\newblock
+	\printfield{edition}%
+	\newunit
+	\iffieldundef{maintitle}
+	{\printfield{volume}%
+	 \printfield{part}}
+	{}%
+	\newunit
+	\printfield{volumes}%
+	\newunit\newblock
+	\usebibmacro{series+number}%
+	\newunit\newblock
+	\printfield{note}%
+	\newunit\newblock
 	\usebibmacro{publisher+location+date}%
 	\newunit\newblock
 	\iftoggle{bbx:isbn}
