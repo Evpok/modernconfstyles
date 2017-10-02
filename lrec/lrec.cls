@@ -2,7 +2,7 @@
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
 
-\ProvidesExplClass{lrec}{23-09-2017}{0.0.0}{The style for LREC conference papers and extended abstracts}
+\ProvidesExplClass{lrec}{2017/09/23}{0.0.0}{The style for LREC conference papers and extended abstracts}
 % Keep trace of submission/standalone mode
 \bool_new:N\g_lrec_submission_bool
 \bool_set_true:N\g_lrec_submission_bool
@@ -10,8 +10,6 @@
 \keys_define:nn {lrec} {
     submission .bool_set:N = \g_lrec_submission_bool,
     submission .default:n = true,
-    standalone .bool_set_inverse:N = \g_lrec_submission_bool,
-    standalone .default:n = false,
 }
 
 % Provide alternative content depending if the paper is in submission version
@@ -20,13 +18,14 @@
 }
 \ProcessKeysOptions{lrec}
 
-\LoadClass[a4paper, 10pt, twocolumn]{article}
+\LoadClass[a4paper, 10pt, twocolumns]{article}
 \RequirePackage[margin=19mm,
-            top=25mm,
-            columnsep=6.3mm]{geometry}
+                top=25mm,
+                columnsep=6.3mm]{geometry}
 
 % Other page settings
 \dim_gset:Nn\parindent{0cm}
+\dim_gset:Nn\parskip{0cm}
 
 % Allow a larger proportion of the column/page to be taken up with
 % floats than the standard classes.  Also discourage the creation of
@@ -112,7 +111,7 @@
     \titlespacing*{\subsubsection}{0pt}{6pt minus \parskip}{0pt}
 
 % Set pdf metadata using hyperref
-% TODO: rework `\name` & al to make them more easily parsable and provide more metadata here
+% TODO: rework `\name` et al to make them more easily parsable and provide more metadata here
 \AtBeginDocument{
     \@ifpackageloaded{hyperref}{%
         \hypersetup{pdftitle=\tl_use:N\g_lrec_title_tl}

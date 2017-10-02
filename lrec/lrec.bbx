@@ -1,7 +1,7 @@
 \ProvidesFile{lrec.bbx}
 
 \RequireBibliographyStyle{authoryear}
-\ExecuteBibliographyOptions{uniquename=init, giveninits, doi=false, isbn=false, url=false}
+\ExecuteBibliographyOptions{uniquename=init, giveninits, doi=false, isbn=false, url=false, abbreviate=false}
 
 \defbibheading{bibliography}[\refname]{}
 % Name ordering (default is family-given/given-family)
@@ -14,28 +14,151 @@
 		{}
 		{\clearfield{urlyear}\clearfield{urlmonth}\clearfield{urlday}}
 }
+\DeclareFieldFormat[article]{pages}{#1}
+
+\renewcommand*{\intitlepunct}{\space}
+
+\renewbibmacro*{journal+issuetitle}{%
+	\usebibmacro{journal}%
+	\setunit*{\addcomma\addspace}%
+	\iffieldundef{series}
+	{}
+	{\newunit
+	 \printfield{series}%
+	 \setunit{\addcomma\addspace}}%
+	\usebibmacro{volume+number+eid}%
+	\setunit{\addcomma\addspace}%
+	\usebibmacro{issue+date}%
+	\setunit{\addcomma\space}%
+	\usebibmacro{issue}%
+	\newunit
+}
+
+% FIXME: this does not print editor roles
+\renewbibmacro*{byeditor+others}{%
+	\ifnameundef{editor}{%
+	} {%
+		\printnames[byeditor]{editor}%
+		\addcomma\addspace%
+		\ifthenelse{\value{listtotal}>1}{%
+			\bibstring{editors}%
+		} {%
+			\bibstring{editor}%
+		}%
+		\clearname{editor}%
+	}
+}
+
 
 % LanguageResource references
 \DeclareFieldFormat{islrn}{ISLRN #1}
 
 \DeclareBibliographyDriver{languageresource}{
-    \usebibmacro{bibindex}%
-    \usebibmacro{begentry}%
-    \usebibmacro{author}%
-    \setunit{\printdelim{nametitledelim}}\newblock
-    \usebibmacro{title}%
-    \newunit\newblock
-    \printlist{publisher}%
-    \newunit\newblock
-    \printfield{series}%
-    \newunit\newblock
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author}%
+	\setunit{\printdelim{nametitledelim}}\newblock
+	\usebibmacro{title}%
+	\newunit\newblock
+	\printlist{publisher}%
+	\newunit\newblock
+	\printfield{series}%
+	\newunit\newblock
 	\printfield{edition}
-    \newunit\newblock
-    \printfield{islrn}
-    \newunit\newblock
-    \usebibmacro{url}%
-    \setunit{\bibpagerefpunct}\newblock
-    \usebibmacro{pageref}%
-    \newunit\newblock
-    \usebibmacro{finentry}
+	\newunit\newblock
+	\printfield{islrn}
+	\newunit\newblock
+	\usebibmacro{url}%
+	\setunit{\bibpagerefpunct}\newblock
+	\usebibmacro{pageref}%
+	\newunit\newblock
+	\usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{article}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author/translator+others}%
+	\setunit{\printdelim{nametitledelim}}\newblock
+	\usebibmacro{title}%
+	\newunit
+	\printlist{language}%
+	\newunit\newblock
+	\usebibmacro{byauthor}%
+	\newunit\newblock
+	\usebibmacro{bytranslator+others}%
+	\newunit\newblock
+	\printfield{version}%
+	\newunit\newblock
+	\usebibmacro{journal+issuetitle}: \usebibmacro{note+pages}%
+	\newunit
+	\usebibmacro{byeditor+others}%
+	\newunit\newblock
+	\iftoggle{bbx:isbn}
+	{\printfield{issn}}
+	{}%
+	\newunit\newblock
+	\usebibmacro{doi+eprint+url}%
+	\newunit\newblock
+	\usebibmacro{addendum+pubstate}%
+	\setunit{\bibpagerefpunct}\newblock
+	\usebibmacro{pageref}%
+	\newunit\newblock
+	\iftoggle{bbx:related}
+	{\usebibmacro{related:init}%
+	 \usebibmacro{related}}
+	{}%
+	\usebibmacro{finentry}%
+}
+
+\DeclareBibliographyDriver{inproceedings}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author/translator+others}%
+	\setunit{\printdelim{nametitledelim}}\newblock
+	\usebibmacro{title}%
+	\newunit
+	\printlist{language}%
+	\newunit\newblock
+	\usebibmacro{byauthor}%
+	\newunit\newblock
+	\usebibmacro{in:}%
+	\usebibmacro{byeditor+others}
+	\setunit{\addcomma\addspace}
+	\usebibmacro{maintitle+booktitle}%
+	\setunit{\addcomma\addspace}
+	\usebibmacro{chapter+pages}%
+	\newunit\newblock
+	\usebibmacro{event+venue+date}%
+	\newunit\newblock
+	\iffieldundef{maintitle}
+	{\printfield{volume}%
+	 \printfield{part}}
+	{}%
+	\newunit
+	\printfield{volumes}%
+	\newunit\newblock
+	\usebibmacro{series+number}%
+	\newunit\newblock
+	\printfield{note}%
+	\newunit\newblock
+	\printlist{organization}%
+	\newunit
+	\usebibmacro{publisher+location+date}%
+	\newunit\newblock
+	\iftoggle{bbx:isbn}
+	{\printfield{isbn}}
+	{}%
+	\newunit\newblock
+	\usebibmacro{doi+eprint+url}%
+	\newunit\newblock
+	\usebibmacro{addendum+pubstate}%
+	\setunit{\bibpagerefpunct}\newblock
+	\usebibmacro{pageref}%
+	\newunit\newblock
+	\iftoggle{bbx:related}
+	{\usebibmacro{related:init}%
+	 \usebibmacro{related}}
+	{}%
+	\usebibmacro{finentry}
 }
