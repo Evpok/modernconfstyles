@@ -7,7 +7,7 @@ It is no secret (but no shame either!) that many LaTeX templates offered by conf
   - [fontspec](https://github.com/wspr/fontspec) and [unicode-math](https://github.com/wspr/unicode-math)
   - [BibLaTeX](https://github.com/plk/biblatex/)/[Biber](http://biblatex-biber.sourceforge.net/)
 
-This repository offers alternatives to the official templates that are compatble with these and much more !
+This repository offers alternatives to the official templates that are compatible with these and much more !
 
 ## Limitations
 It is a sad fact that modernization sometimes has to get rid of good old things in order to get good new things, and this is no exception.
@@ -30,8 +30,9 @@ That said, it is not *that* a big deal, since some official conference templates
 So don't worry too much.
 
 ## Licence
-This body of work is released under your choice of the [Creative Commons CC0 1.0 Universal  Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/), the [WTFPL 2 license](http://wtfpl.net) and the MIT License, whose full texts are available in the `LICENSE.XXX.md` files.
+This body of work is released under your choice of the [Creative Commons CC0 1.0 Universal  Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/), the [WTFPL 2 license](http://wtfpl.net) or the MIT License, whose full texts are available in the `LICENSE.XXX.md` files.
 
 I do try to stay as close as possible to the original templates, so this might or might not be an issue of copyright infrigement, depending on the copyright policy and moral stance you take.
 However, this is done in good faith, in the spirit of sharing tools to make life easier for authors, and in no way to harm the original template providers, nor to imply any criticism of their considerable work.
-If you are a conference organisator and you want to claim rights on anything provided here, please contact me before unleashing your lawyers.
+
+The bottom line is: if you are a copyright holder and want to claim rights on anything provided here, please contact me before unleashing your lawyers.
