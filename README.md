@@ -6,7 +6,6 @@ It is no secret (but no shame either!) that many LaTeX templates offered by conf
   - [Lua(La)TeX](http://lualatex.org) and [Xe(La)TeX](http://xetex.sourceforge.net/)
   - [fontspec](https://github.com/wspr/fontspec) and [unicode-math](https://github.com/wspr/unicode-math)
   - [BibLaTeX](https://github.com/plk/biblatex/)/[Biber](http://biblatex-biber.sourceforge.net/)
-  - …
 
 This repository offers alternatives to the official templates that are compatble with these and much more !
 
@@ -30,7 +29,7 @@ That said, it is not *that* a big deal, since some official conference templates
 
 So don't worry too much.
 
-## Licence
+## Licence
 This body of work is released under your choice of the [Creative Commons CC0 1.0 Universal  Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/), the [WTFPL 2 license](http://wtfpl.net) and the MIT License, whose full texts are available in the `LICENSE.XXX.md` files.
 
 I do try to stay as close as possible to the original templates, so this might or might not be an issue of copyright infrigement, depending on the copyright policy and moral stance you take.
