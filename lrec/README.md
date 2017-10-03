@@ -14,6 +14,9 @@ Note that according to the official guidelines, using this should get you reject
   - Use `\documentclass{lrec}` and `\usepackage[backend=biber, style=lrec]{biblatex}`
   - See [`xample.tex`](xample.tex) for more details about what you can do
 
+## Known limitations
+The bibliography styles have not been extensively tested and might not work for all entry types, check yours before submission and submit bug reports if something is wrong.
+
 ## API
 Listing only changes wrt the official template.
 
