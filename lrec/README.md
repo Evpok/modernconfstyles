@@ -29,6 +29,7 @@ Listing only changes wrt the official template.
 ### Added
   - The `submission=false` class option will try to give you a nicer look for out of proceeding, standalone versions of your article, most notably by adding headers and page numbers.
     - The `\IfSubmission{code if submission}{code if standalone}` gives you a way to change the content of your document depending on that option.
+  - If hyperref is used in your document (and it should be), the `lrec` class will try to set some pdf metadata using the content of `\title`, `\author`, `\keywords`…
 
 
 ## Other deviations
