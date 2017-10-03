@@ -7,16 +7,27 @@
 \bool_new:N\g_lrec_submission_bool
 \bool_set_true:N\g_lrec_submission_bool
 
+
 \keys_define:nn {lrec} {
-    submission .bool_set:N = \g_lrec_submission_bool,
-    submission .default:n = true,
+	submission .bool_gset:N = \g_lrec_submission_bool,
+	standalone .bool_gset_inverse:N = \g_lrec_submission_bool,
 }
+
+\ProcessKeysOptions{lrec}
 
 % Provide alternative content depending if the paper is in submission version
 \NewDocumentCommand\IfSubmission{+m +O{}}{
-    \bool_if:nTF{\g_lrec_submission_bool}{#1}{#2}
+	\bool_if:nTF\g_lrec_submission_bool{#1}{#2}
 }
-\ProcessKeysOptions{lrec}
+
+% Keep trace of the use of hyperref
+\bool_new:N\g_lrec_hyperref_bool
+\bool_set_false:N\g_lrec_hyperref_bool
+\AtBeginDocument{
+	\@ifpackageloaded{hyperref}{
+        \bool_set_true:N\g_lrec_hyperref_bool
+	}{}
+}
 
 \LoadClass[a4paper, 10pt, twocolumns]{article}
 \RequirePackage[margin=19mm,
@@ -53,7 +64,7 @@
 % Fonts
 \RequirePackage{fontspec}
 	\setmainfont{TeX Gyre Termes}  % Open-source “Times Roman”
-    \setlength{\baselineskip}{11pt}
+	\setlength{\baselineskip}{11pt}
 
 % Title block
 \tl_new:N\g_lrec_title_tl
@@ -71,51 +82,66 @@
 % Meant for use only at the top of the first page (because of dirty spaces adjustments)
 \RenewDocumentCommand\maketitle{}{
 	\twocolumn[
-        % Dirty fix for the fact that the first page top margin must be 3cm instead of 2.5cm
-        \vspace*{.5cm}
+		% Dirty fix for the fact that the first page top margin must be 3cm instead of 2.5cm
+		\vspace*{.5cm}
 		{\centering
-	    	{\bfseries\fontsize{14pt}{16pt}\selectfont\tl_use:N\g_lrec_title_tl}\par
-            \vspace{2em}
+			{\bfseries\fontsize{14pt}{16pt}\selectfont\tl_use:N\g_lrec_title_tl}
+            \IfSubmission{}[
+                \bool_if:nT\g_lrec_hyperref_bool{\pdfbookmark[1]{Title}{title}}
+            ]
+            \par
+			\vspace{2em}
 			{\large\bfseries\tl_use:N\g_lrec_name_tl}\par
-            {\normalfont\fontsize{10pt}{12pt}\selectfont\tl_use:N\g_lrec_address_tl}\par
-            \vspace{12pt}
-            {\bfseries\fontsize{10pt}{12pt}\selectfont\abstractname}\par
-        }
+			{\normalfont\fontsize{10pt}{12pt}\selectfont\tl_use:N\g_lrec_address_tl}\par
+			\vspace{12pt}
+			{\bfseries\fontsize{10pt}{12pt}\selectfont\abstractname}
+            \IfSubmission{}[
+                \bool_if:nT\g_lrec_hyperref_bool{\pdfbookmark[1]{Abstract}{abstract}}
+            ]
+            \par
+		}
 		{\normalfont\fontsize{9pt}{10pt}\selectfont
-            \tl_use:N\g_lrec_abstract_tl
-        }\par
-        \vspace{12pt}
-        \textbf{Keywords}:\, \tl_use:N\g_lrec_keywords_tl
-        \vspace{12pt}
+			\tl_use:N\g_lrec_abstract_tl
+		}\par
+		\vspace{12pt}
+		\textbf{Keywords}:\, \tl_use:N\g_lrec_keywords_tl
+		\vspace{12pt}
 	]
 }
 
 % Header and footer
 \RequirePackage[pagestyles]{titlesec}
 	\newpagestyle{main}{
-        \IfSubmission{
-        }{
-    		\sethead{}{\ifnum\thepage>1 {\tl_use:N\g_lrec_title_tl}\fi}{}
-    		\setfoot{}{\thepage}{}
-        }
-    }
-	\pagestyle{main}
+		\IfSubmission{
+		}[
+			\sethead{}{\ifnum\thepage>1 {\tl_use:N\g_lrec_title_tl}\fi}{}
+			\setfoot{}{\thepage}{}
+		]
+	}
+	\AtBeginDocument{
+		\pagestyle{main}
+	}
 
-    \titleformat{\section}{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont\filcenter}{\thesection.}{1em}{}
-    \titlespacing*{\section}{0pt}{12pt minus \parskip}{3pt}
+	\titleformat{\section}{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont\filcenter}{\thesection.}{1em}{}
+	\titlespacing*{\section}{0pt}{12pt minus \parskip}{3pt}
 
-    \titleformat{\subsection}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont\filcenter}{\thesubsection.}{1em}{}
-    \titlespacing*{\subsection}{0pt}{6pt minus \parskip}{3pt}
+	\titleformat{\subsection}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont\filcenter}{\thesubsection.}{1em}{}
+	\titlespacing*{\subsection}{0pt}{6pt minus \parskip}{3pt}
 
-    \titleformat{\subsubsection}{\normalfont\bfseries\fontsize{10pt}{12pt}\selectfont\filcenter}{\thesubsubsection.}{1em}{}
-    \titlespacing*{\subsubsection}{0pt}{6pt minus \parskip}{0pt}
+	\titleformat{\subsubsection}{\normalfont\bfseries\fontsize{10pt}{12pt}\selectfont\filcenter}{\thesubsubsection.}{1em}{}
+	\titlespacing*{\subsubsection}{0pt}{6pt minus \parskip}{0pt}
 
 % Set pdf metadata using hyperref
 % TODO: rework `\name` et al to make them more easily parsable and provide more metadata here
 \AtBeginDocument{
-    \@ifpackageloaded{hyperref}{%
-        \hypersetup{pdftitle=\tl_use:N\g_lrec_title_tl}
-    }{}
+	\IfSubmission{}[
+		\bool_if:nT\g_lrec_hyperref_bool{
+			\hypersetup{
+	            pdftitle=\tl_use:N\g_lrec_title_tl,
+	            pdfkeywords=\tl_use:N\g_lrec_keywords_tl
+			}
+		}
+	]
 }
 
 % Legacy commands

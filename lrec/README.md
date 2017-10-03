@@ -27,7 +27,7 @@ Listing only changes wrt the official template.
   - The `\cite`, `\newcite` and `\shortcite` commands work as advertised, but I would advise to use the more explicit `\parencite` and `\textcite` and to avoid using `\shortcite`.
 
 ### Added
-  - The `submission=false` class option will try to give you a nicer look for out of proceeding, standalone versions of your article, most notably by adding headers and page numbers.
+  - The `standalone` class option will try to give you a nicer look for out of proceeding, standalone versions of your article, most notably by adding headers and page numbers (see [below](## Standalone mode))
     - The `\IfSubmission{code if submission}{code if standalone}` gives you a way to change the content of your document depending on that option.
   - If hyperref is used in your document (and it should be), the `lrec` class will try to set some pdf metadata using the content of `\title`, `\author`, `\keywords`…
 
@@ -64,3 +64,10 @@ The official template sets its dimensions in weird ways that I don't want to rev
 Oddly, that lefts 0.7mm not accounted for, but instead of using them in [weird and pretty way](https://twitter.com/EvpokPadding/status/911674913412599808), I give them to you as extra text space.
 
 You are welcome.
+
+## Standalone mode
+Declaring the document class as `\documentclass[standalone]{lrec}` will bring you over to the fabled standalone mode, which features
+
+  - Page numbers
+  - Headers
+  - Additional PDF bookmarks
