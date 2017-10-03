@@ -66,6 +66,18 @@
 }
 
 
+\newbibmacro*{publisher+location+date}{%
+	\printlist{location}%
+	\setunit*{\addcomma\space}%
+	\usebibmacro{date}%
+	\iflistundef{publisher}
+		{\setunit*{\addcomma\space}}
+		{\setunit*{\addperiod\space}}%
+	\printlist{publisher}%
+	\newunit
+}
+
+
 % LanguageResource references
 \DeclareFieldFormat{islrn}{ISLRN #1}
 
