@@ -2,7 +2,7 @@
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
 
-\ProvidesExplClass{lrec}{2017/09/23}{0.0.0}{The style for LREC conference papers and extended abstracts}
+\ProvidesExplClass{lrec}{2017/09/23}{0.0.1}{The style for LREC conference papers and extended abstracts}
 % Keep trace of submission/standalone mode
 \bool_new:N\g_lrec_submission_bool
 \bool_set_true:N\g_lrec_submission_bool
