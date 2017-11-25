@@ -1,11 +1,13 @@
 LREC
 ====
 
-This is an unofficial style for [The International Conference on Language Resources and Evaluation (LREC)](http://lrec-conf.org/). It works for both the extend abstract and final submissions.
+This is an unofficial style for [The International Conference on Language Resources and Evaluation (LREC)](http://lrec-conf.org/).
+It works for both extended abstracts and final submissions.
 
 Note that according to the official guidelines, using this should get you rejected
 
 > You MUST use the LREC template for both the Extended Abstract and the Final Paper. If you do not, your submission will be rejected.
+[*LREC 2018 Autor's Kit*][authorkit2018]
 
 
 ## How to use
@@ -18,12 +20,12 @@ Note that according to the official guidelines, using this should get you reject
 The bibliography styles have not been extensively tested and might not work for all entry types, check yours before submission and submit bug reports if something is wrong.
 
 ## API
-Listing only changes wrt the official template.
+Listing only changes with respect to the official template.
 
 ### Changed
   - We chose to use a document class instead of a package, as we felt it made more sense, since we are actually changing things like the title apparence or the page geometry.
   - The title block should be typeset using `\maketitle`. The original `\maketitleabstract` is aliased to it.
-  - The `\keywords` commands is now a true standalone command that sets you keyword and not a mere formatting directive that goes in your abstract, though you should be able to keep using it as in the original template.
+  - The `\keywords` commands is now a true standalone command that sets you keyword and not a mere formatting directive that goes in your abstract, though you should be able to keep using it as in the original template<a href="#note1" id="noteref1">¹</a>.
   - The `\cite`, `\newcite` and `\shortcite` commands work as advertised, but I would advise to use the more explicit `\parencite` and `\textcite` and to avoid using `\shortcite`.
 
 ### Added
@@ -34,7 +36,7 @@ Listing only changes wrt the official template.
 
 ## Other deviations
 ### Style
-The priority has been given to the format of the official templates over the [author's kit stylesheet](http://lrec2018.lrec-conf.org/en/submission/authors-kit/), as per the big scary red warning at the top of the latter, except for
+The priority has been given to the format of the official templates over the [author's kit stylesheet][authorkit2018], as per the big scary red warning at the top of the latter, except for
 
   - The maximum number of people per list in the bibliography (four or more and you'll get an *et al.*.). The LaTeX template does not seem actually enforce it.
   - The dimensions are those mandated by the stylesheet and might slightly deviate from the official template's (see [below](### Dimensions))
@@ -60,10 +62,14 @@ and thus actually uses URW++ Nimbus Roman No9 L.
 
 ### Dimensions
 
-The official template sets its dimensions in weird ways that I don't want to reverse-engineer, so I used mandated by the stylesheet.
-Oddly, that lefts 0.7mm not accounted for, but instead of using them in [weird and pretty way](https://twitter.com/EvpokPadding/status/911674913412599808), I give them to you as extra text space.
+The official template sets its dimensions in weird ways that I don't want to reverse-engineer, so I used those mandated by the stylesheet.
+Oddly, that leaves 0.7mm not accounted for, but instead of using them in [pretty ways](https://twitter.com/EvpokPadding/status/911674913412599808), I give them to you as extra text space.
 
 You are welcome.
+
+### Misc
+
+  - We decided against printing “LREC Proceedings style” to the log.
 
 ## Standalone mode
 Declaring the document class as `\documentclass[standalone]{lrec}` will bring you over to the fabled standalone mode, which features
@@ -71,3 +77,11 @@ Declaring the document class as `\documentclass[standalone]{lrec}` will bring yo
   - Page numbers
   - Headers
   - Additional PDF bookmarks
+
+This is intended to be a style for standalone publications, such as on your homepage or a third-party archive that stays close to LREC's to avoid confusing your readers, but take advantages of te fact that on those media, you are not constrained by te official style requirements.
+
+---
+
+<a id="note1" href="#noteref1">1.</a> Please don't.
+
+[authorkit2018]: http://lrec2018.lrec-conf.org/en/submission/authors-kit/

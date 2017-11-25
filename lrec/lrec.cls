@@ -7,7 +7,6 @@
 \bool_new:N\g_lrec_submission_bool
 \bool_set_true:N\g_lrec_submission_bool
 
-
 \keys_define:nn {lrec} {
 	submission .bool_gset:N = \g_lrec_submission_bool,
 	standalone .bool_gset_inverse:N = \g_lrec_submission_bool,
