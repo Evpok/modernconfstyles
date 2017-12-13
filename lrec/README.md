@@ -30,7 +30,7 @@ Listing only changes with respect to the official template.
   - The `\cite`, `\newcite` and `\shortcite` commands work as advertised, but using the more explicit `\parencite` and `\textcite`and  avoiding using `\shortcite` is recommended.
 
 ### Added
-  - The `standalone` class option will try to give you a nicer look for standalone versions of your article (such as for putting on your homepage), most notably by adding headers and page numbers (see <a href="#standalone">below</a>))
+  - The `standalone` class option will try to give you a nicer look for standalone versions of your article (such as for putting on your homepage), most notably by adding headers and page numbers (see <a href="#standalone">below</a>)
     - The `\IfSubmission{code if submission}{code if standalone}` command gives you a way to change the content of your document depending on that option.
   - If hyperref is used in your document (and it should be), the `lrec` class will set pdf metadata using the content of `\title`, `\author`, `\keywords`…
 
@@ -61,7 +61,7 @@ Fun fact : the only place where Times New Roman is explicitely mandated by the
 
 and thus actually uses URW++ Nimbus Roman No9 L.
 
-### <a id="dimensions>Dimensions</a>
+### <a id="dimensions">Dimensions</a>
 
 The official template sets its dimensions in weird ways that I don't want to reverse-engineer, so I used those mandated by the stylesheet.
 Oddly, that leaves 0.7mm not accounted for, but instead of using them in [pretty ways](https://twitter.com/EvpokPadding/status/911674913412599808), I give them to you as extra text space.
