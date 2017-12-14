@@ -37,22 +37,22 @@
 \dim_gset:Nn\parindent{0cm}
 \dim_gset:Nn\parskip{0cm}
 
-% Allow a larger proportion of the column/page to be taken up with
-% floats than the standard classes.  Also discourage the creation of
+% Allow a larger proportion of the column/page to be used for
+% floats than the standard classes. Also discourage the creation of
 % columns/pages containing only floats.
 
 % Maximum fraction of the page that can be occupied by floats:
-\tl_gset:Nn\topfraction{.9}
-\tl_gset:Nn\bottomfraction{.5}
-\tl_gset:Nn\dbltopfraction{.9}	% 2-column floats
+\tl_gset:Nn\topfraction{0.9}
+\tl_gset:Nn\bottomfraction{0.5}
+\tl_gset:Nn\dbltopfraction{0.9}	% 2-column floats
 
 % Minimum fraction of page that can be occupied by text:
-\tl_gset:Nn\textfraction{.1}
+\tl_gset:Nn\textfraction{0.1}
 
 % Maximum fraction of a page that can be occupied by floats before a
 % separate float page is produced:
 \tl_gset:Nn\floatpagefraction{0.9}
-\tl_gset:Nn\dblfloatpagefraction{.9}	% 2-column floats
+\tl_gset:Nn\dblfloatpagefraction{0.9}	% 2-column floats
 
 % Footnotes
 \tl_gset:Nn\footnotesize{\fontsize{9pt}{11pt}\selectfont}
@@ -79,9 +79,11 @@
 \NewDocumentCommand\keywords{m}{\tl_gset:Nn\g_lrec_keywords_tl{#1}}
 
 % Meant for use only at the top of the first page (because of dirty spaces adjustments)
+% TODO: Make this more LaTeX3-y, maybe through using l3coffins ?
 \RenewDocumentCommand\maketitle{}{
 	\twocolumn[
 		% Dirty fix for the fact that the first page top margin must be 3cm instead of 2.5cm
+		% TODO: do this cleanly
 		\vspace*{.5cm}
 		{\centering
 			{\bfseries\fontsize{14pt}{16pt}\selectfont\tl_use:N\g_lrec_title_tl}
@@ -109,6 +111,7 @@
 }
 
 % Header and footer
+% TODO: needs more LaTeX3 idiomatism
 \RequirePackage[pagestyles]{titlesec}
 	\newpagestyle{main}{
 		\IfSubmission{
@@ -143,5 +146,5 @@
 	]
 }
 
-% Legacy commands
+% Legacy commands for backward compatibility
 \tl_set:Nn\maketitleabstract{\maketitle}
