@@ -1,0 +1,517 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+%
+% File CLARIN2018.tex
+%
+% Adapted for modern XeLaTeX and Unicode by desmedt@uib.no
+% Otherwise contact: jwagner@computing.dcu.ie
+%%
+%% Based on the style files for CLARIN2015, which were, in turn,
+%% Based on the style files for CAC2014, which were, in turn,
+%% Based on the style files for ACL-2014, which were, in turn,
+%% Based on the style files for ACL-2013, which were, in turn,
+%% Based on the style files for ACL-2012, which were, in turn,
+%% based on the style files for ACL-2011, which were, in turn,
+%% based on the style files for ACL-2010, which were, in turn,
+%% based on the style files for ACL-IJCNLP-2009, which were, in turn,
+%% based on the style files for EACL-2009 and IJCNLP-2008...
+
+%% Based on the style files for EACL 2006 by
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass{clarin}
+\usepackage{hyperref}
+
+\usepackage[backend=biber, style=apa, bibencoding=utf8]{biblatex}
+\addbibresource{clarin-sample.bib}
+
+\usepackage{covington} % if needed, for linguistic examples
+
+\title{Instructions for CLARIN2018 Proceedings}
+
+% - - - - - - - IMPORTANT - - - - - - -
+% Leave the author information empty until your paper has been accepted
+
+\author{First Author \\
+    Department (optional)\\
+    University of City, Country \\
+    {\tt email@domain} \\
+    \And % if needed: this makes a second column
+    Second Author \\
+    Department (optional)\\
+    University Name without city \\
+    City, Country \\
+    {\tt email@domain} \\
+    % \AND % if needed: this makes a second row
+    % Third Author \\
+    % Department (optional)\\
+    % University of City, Country \\
+    % {\tt email@domain} \\\And
+    % Fourth Author \\
+    % Department (optional)\\
+    % University Name without city \\
+    % City, Country \\
+    % {\tt email@domain} \\
+}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  This document contains the instructions for preparing a paper for CLARIN2018.
+  The document itself
+  conforms to its own specifications, and is therefore an example of
+  what your manuscript should look like. These instructions should be
+  used both for submissions to be reviewed \emph{and} for final versions of
+  accepted papers to be published in the proceedings.
+  Authors are asked to conform to all the directions
+  given in this document and to other instructions in the \emph{Call for Papers}.
+\end{abstract}
+
+\section{Introduction} \label{intro}
+
+% - - - - - - - IMPORTANT - - - - - - -
+% The following footnote without marker is needed for the camera-ready
+% version of the paper.
+% Comment out the instructions (first text) and uncomment the 8 lines
+% under "final paper" for your variant of English.
+%
+\blfootnote{
+    %
+    % for review submission
+    %
+    %\hspace{-0.65cm}  % space normally used by the marker
+This work is licenced under a Creative Commons Attribution 4.0 International Licence.
+Licence details:
+\url{http://creativecommons.org/licenses/by/4.0/}
+    % % final paper: en-uk version (to license, a licence)
+    %
+    % \hspace{-0.65cm}  % space normally used by the marker
+    % This work is licensed under a Creative Commons
+    % Attribution 4.0 International Licence.
+    % Licence details:
+    % \url{http://creativecommons.org/licenses/by/4.0/}
+    %
+    % % final paper: en-us version (to licence, a license)
+    %
+    % \hspace{-0.65cm}  % space normally used by the marker
+    % This work is licenced under a Creative Commons
+    % Attribution 4.0 International License.
+    % License details:
+    % \url{http://creativecommons.org/licenses/by/4.0/}
+}
+
+The following instructions are directed to all authors preparing a paper
+for CLARIN2018.
+Some of these instructions differ slightly depending on whether one is submitting
+a version for initial reviewing, one is uploading an updated paper ahead of the conference, or one is uploading a final full paper for inclusion in the proceedings after the conference.
+Such differences will be clearly indicated in the remainder of this document.
+All authors are required to adhere to these specifications,
+as well as to the instructions in the \emph{Call for Papers}.
+
+%Authors from countries in which access to word-processing systems is limited should contact clarin@clarin.eu as soon as possible.
+
+\section{General Instructions}
+
+All papers should be written in English, using either American or British spelling, and should be sumitted in Portable Document Format (PDF).
+
+Since reviewing will be double-blind, author names should not appear in any submission to be reviewed (but should be given in the final accepted paper).
+Likewise, submissions to be reviewed must not mention contributors, project names, grant numbers, and names or URLs of resources or tools that have only been made publicly available in
+the last 3 weeks or are about to be made public.
+More detailed instructions on anonymisation will be given below.
+
+The length of the manuscript, when written in the specified layout,
+should conform to the minimum and maximum page limits described in the \emph{Call for Papers}.
+There may be different page limits for extended abstracts before the conference and for full papers to be published in the Proceedings after the conference.
+Papers that do not conform to the specified length and formatting requirements may be rejected without review.
+Do not number the pages.
+
+
+\subsection{Electronically Available Resources}
+
+We strongly prefer that you prepare your PDF files using LaTeX with
+the official CLARIN2018 style file (CLARIN2018.sty) and bibliography style
+(acl.bst). These files are available at the website, where you will also find the document
+you are currently reading (CLARIN2018.pdf) and its LaTeX source code
+(CLARIN2018.tex).\footnote{\url{http://clarin.eu/news/clarin-annual-conference-call-papers}}
+
+In practice, you can make a copy of this source code file (CLARIN2018.tex) and keep the preamble and basic structure but replace all content.
+
+You can alternatively use Open Office or Microsoft Word to produce your PDF file.
+In this case, we strongly recommend the use of the Open Office template file
+(CLARIN2018.ott) or the Microsoft Word template
+(CLARIN2018.dotx) respectively, which are also available on the website.
+Reviewing will be double blind.
+Therefore, if you use these templates, we suggest that you anonymise
+  your source file so that the pdf produced does not retain your
+  identity.  This can be done by removing any personal information
+from your source document properties.
+
+
+\subsection{Providing Electronic Manuscripts in PDF} \label{sect:pdf}
+
+All versions of the papers must be uploaded in Adobe's
+Portable Document Format (PDF). PDF files are usually produced from
+LaTeX using the \textit{pdflatex} command. If your version of
+LaTeX produces Postscript files, you can convert these into PDF
+using \textit{ps2pdf} or \textit{dvipdf}. On Windows, you can also use
+Adobe Distiller to generate PDF.
+
+Please make sure that your PDF file includes all the fonts
+with the necessary glyphs
+(especially symbols and non-Latin
+characters). When you print or create the PDF file, there is usually
+an option in your printer setup to include none, all or just
+non-standard fonts.  Please make sure that you select the option of
+including ALL the fonts. Before sending it, test your PDF by
+  printing it from a computer different from the one where it was
+  created. Moreover, some word processors may generate very large PDF
+files, where each page is rendered as an image. Such images may
+reproduce poorly. In this case, try alternative ways to obtain the
+PDF. One way on some systems is to install a driver for a postscript
+printer, send your document to the printer specifying ``Output to a
+file'', then convert the file to PDF.
+
+\section{Layout} \label{ssec:layout}
+
+It is of utmost importance to specify the A4 paper size (210~mm
+x 297~mm). This is normally achieved by
+specifying the \texttt{a4paper} option  in the document class.
+When working with {\tt dvips}, one could also specify {\tt -t a4}.
+
+Typeset manuscripts with a single column to a page.
+The margins should be 25~mm on all sides, so that
+the dimensions of the text area on an A4 page are 160~mm x 247~mm.
+Manuscripts should be typed single-spaced.
+Please make sure the text is hyphenated correctly.
+
+
+\subsection{Fonts}
+
+For reasons of uniformity, the Times, Times Roman or Times New Roman font should be
+used for normal text. This can be accomplished by putting the necessary commands
+in the preamble of a LaTeX document. Two ways are possible, depending on whether you
+use traditional LaTeX2e or the more modern XeLaTeX which supports
+full Unicode directly in the source. In the latter case you make sure that your source is written
+in UTF-8 and you specify at least the following in the preamble:
+
+\begin{quote}
+\begin{verbatim}
+\usepackage{xltxtra}
+\setmainfont[Mapping=tex-text]{Times}
+\end{verbatim}
+\end{quote}
+
+In traditional LaTeX, you specify at least the following instead:
+
+\begin{quote}
+\begin{verbatim}
+\usepackage{times}
+\usepackage{latexsym}
+\end{verbatim}
+\end{quote}
+ If Times Roman is unavailable, use Computer
+ Modern Roman (LaTeX2e's default).  Note that the latter is about
+ 10\% less dense than Times.
+
+Table \ref{font-table} specifies the sizes and styles to be used for
+different kinds of text elements.
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|rl|}
+\hline \bf Type of Text & \bf Font Size & \bf Style \\ \hline
+paper title & 15 pt & bold \\
+author names & 12 pt & bold \\
+author affiliation & 12 pt & \\
+the word ``Abstract'' & 12 pt & bold \\
+section titles & 12 pt & bold \\
+subsection titles & 11 pt & bold\\
+normal text & 11 pt  &\\
+emphasis & & italic\\
+captions & 11 pt & \\
+sub-captions & 9 pt & \\
+%abstract text & 10 pt & \\
+bibliography & 10 pt & \\
+footnotes & 9 pt & \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{font-table} Font guide. }
+\end{table}
+
+\subsection{The First Page}
+\label{ssec:first}
+
+The title, author names and addresses should be \emph{identical}
+to those entered to the electronical paper submission website in order
+to maintain the consistency of author information among all
+publications of the conference. If they are different, the publication
+chairs may resolve the difference without consulting with you; so it
+is in your own interest to double-check that the information is
+consistent.
+
+Centre the title, author's name(s) and affiliation(s) across
+the page.
+Do not use footnotes for affiliations. Do not include the
+paper ID number which may be assigned during the submission process.
+
+{\bf Title}: Place the title centred at the top of the first page, in
+a 15 pt bold font. (For a complete guide to font sizes and styles,
+see Table~\ref{font-table}) Long titles should be typed on two lines
+without a blank line intervening.
+Do not format title and other headings in all
+capitals, except for proper names (such as ``BLEU'') that are
+conventionally in all capitals.
+
+{\bf Authors and addresses}: Centred on the page,
+below the title and a blank line, place the author's names(s),
+and the affiliation and addresses on subsequent lines.
+Use full first (given) names (middle initials are allowed). Do
+not format surnames in all capitals (e.g., use ``Schlangen'' not
+``SCHLANGEN'').
+
+The affiliation should contain the
+author's complete address, and an electronic mail
+address. Start the body of the first page 75~mm from the top of the
+page.
+
+In the anonymous version submitted for initial review, your real names and addresses
+should \emph{not} be filled out here (see also the General Instructions section above).
+
+{\bf Abstract}: Type the abstract between addresses and main body.
+The width of the abstract text should be
+smaller than main body by about 6~mm on each side.
+Centre the word {\bf Abstract} in a 12 pt bold
+font above the body of the abstract. The abstract should be a concise
+summary of the general thesis and conclusions of the paper. It should
+be no longer than 200 words. The abstract text should be in normal font size.
+
+{\bf Text}: Begin typing the main body of the text immediately after
+the abstract, observing the single-column format as shown in
+the present document. Indent when starting a new paragraph. Use 11 pt for normal text.
+
+{\bf Licence}: Include a licence statement as an unmarked (unnumbered)
+footnote on the first page of the final, camera-ready paper.
+See Section~\ref{licence} below for details and motivation.
+
+
+\subsection{Sections}
+
+{\bf Headings}: Use numbered sections (with Arabic
+numerals) in order to facilitate cross references. Number subsections
+with the section number and the subsection number separated by a dot,
+in Arabic numerals. Avoid subsubsections.  Use 12 pt for section headings and 11 pt for subsection headings.
+
+{\bf Acknowledgements}: Do not include an acknowledgements section
+when submitting your paper for review, only in the final accepted version of the paper.
+The acknowledgements section should go immediately before the references and its heading should not be numbered.
+
+\textbf{References}: Gather the full set of references together under
+the heading {\bf References}; place the section before any Appendices,
+unless they contain references. Arrange the references alphabetically
+by first author, rather than by order of occurrence in the text.
+Provide as complete a citation as possible, using a consistent format,
+such as the one for {\em Computational Linguistics\/} or the one in the
+{\em Publication Manual of the American
+% Psychological Association\/}~\cite{APA:83}.  Use of full names for
+% authors rather than initials is preferred.  A list of abbreviations
+% for common computer science journals can be found in the ACM
+% {\em Computing Reviews\/}~\cite{ACM:83}.
+
+The LaTeX and BibTeX style files provided roughly fit the
+American Psychological Association format, allowing regular citations,
+short citations and multiple citations (see also below).
+
+{\bf Appendices}: Appendices, if any, directly follow the text and the
+references (but see above).  Letter them in sequence and provide an
+informative title: {\bf Appendix A. Title of Appendix}.
+
+\section{Other Text Elements}
+
+\subsection{Citations} \label{sec:citations}
+
+Citations within the text appear in parentheses
+as~\cite{Gusfield:97} or, if the author's name appears in the text
+itself, as Gusfield~\shortcite{Gusfield:97}.  Append lowercase letters
+to the year in cases of ambiguity.  Treat double authors as
+in~\cite{Aho:72}, but write as in~\cite{Chandra:81} when more than two
+authors are involved. Collapse multiple citations as
+in~\cite{Gusfield:97,Aho:72}. Also refrain from using full citations in parentheses
+as sentence constituents. For instance, instead of the following:
+\begin{quote}
+  ``\cite{Gusfield:97} showed that ...''
+\end{quote}
+we suggest you use the following form:
+\begin{quote}
+``\newcite{Gusfield:97}  showed that ...''
+\end{quote}
+
+If you are using the provided LaTeX and BibTeX style files, you
+can use the command \verb|\newcite| to get ``author (year)'' citations.
+
+As reviewing will be double-blind, the submitted version of the papers
+should not include the authors' names and affiliations. Furthermore,
+self-references that reveal the author's identity, e.g.,
+\begin{quote}
+``We previously showed \cite{Gusfield:97} ...''
+\end{quote}
+should be avoided. Instead of using the first person, use third person citations, e.g. one of the following:
+\begin{quote}
+``Gusfield \shortcite{Gusfield:97}
+previously showed ... ''
+
+``It has previously been shown ... \cite{Gusfield:97}''
+\end{quote}
+Please do not try to anonymize the citations themselves.
+
+\subsection{Footnotes}
+
+Put footnotes at the bottom of the page in 9 pt
+text. They are preferably numbered but can also be referred to by asterisks or other
+symbols.\footnote{This is how a footnote should appear.} Footnotes
+should be separated from the text by a line.\footnote{Note the line
+separating the footnotes from the text.}
+
+\subsection{Graphics}
+
+{\bf Figures and tables}: Place figures (screenshots, photographs, diagrams etc.)
+and tables in the paper near where they are first discussed,
+rather than at the end, if possible.
+
+If you use colour in illustrations, make sure that sufficient contrast is maintained
+when printed in black ink. Try this by printing your document on a printer
+with only black ink.
+
+Narrow graphics in the single-column format may lead to
+large empty spaces,
+see for example the wide margins on both sides of Table~\ref{font-table}.
+If you have multiple graphics with related content, it may be
+preferable to combine them in one graphic.
+You can identify the sub-graphics with sub-captions below the
+sub-graphics numbered (a), (b), (c) etc.
+The LaTeX packages wrapfig, subfig, subtable and/or subcaption
+may be useful.
+
+
+{\bf Captions}: Provide a caption for every illustration and table; number each one
+sequentially in the form:  ``Figure 1. Caption of the Figure.'' or ``Table 1.
+Caption of the Table.'' as illustrated in Table \ref{font-table}.
+Type the captions of the figures and
+tables below the body, using normal 11 pt text.
+
+
+\subsection{Licence Statement}
+\label{licence}
+
+To avoid the need for sending signed copyright hand-over forms to the
+organisers or publishers, we require that authors licence the final version
+of accepted papers under a
+Creative Commons Attribution 4.0 International Licence
+(CC-BY).
+This means that authors (or their employers) retain copyright but
+grant everybody
+the right to adapt and re-distribute their paper
+as long as the authors are credited and modifications listed. %\footnote{See \url{http://creativecommons.org/licenses/by/4.0/} for the licence terms.}
+
+Depending on whether you use American or British English in your
+paper, please include one of the following as an unmarked
+(unnumbered) footnote on page 1 of the \emph{final} version of your paper.
+The LaTeX style file (CLARIN2018.sty) adds a command
+\texttt{blfootnote} for this purpose, and usage of the command is
+prepared in the LaTeX source code (CLARIN2018.tex) at the start
+of Section~\ref{intro} ``Introduction''.
+
+\begin{itemize}
+    %
+    % % final paper: en-uk version (to license, a licence)
+    %
+    \item  This work is licensed under a Creative Commons
+           Attribution 4.0 International Licence.
+           Licence details:
+           \url{http://creativecommons.org/licenses/by/4.0/}
+    %
+    % % final paper: en-us version (to licence, a license)
+    %
+    \item  This work is licenced under a Creative Commons
+           Attribution 4.0 International License.
+           License details:
+           \url{http://creativecommons.org/licenses/by/4.0/}
+\end{itemize}
+
+
+We cannot accept the restrictions ``NonCommercial'' (NC) and
+``ShareAlike'' (SA) as they would
+limit our options for publishing and printing,
+nor the restriction ``NoDerivatives'' (ND) as it may impede our
+ability to add page numbers and a footer, as well as our ability
+to combine papers into volumes.
+Page numbers and proceedings footer are added by the organizers.
+%Mentioning in the footnote that we, the organisers, add page numbers and proceedings footer is a requirement stemming from the CC-BY licence terms.
+
+%
+% We are not doing the following for CAC2014. Maybe next time.
+%
+% \section{XML conversion and supported \LaTeX\ packages}
+%
+% CAC2014 innovates over earlier years in that we will attempt to
+% automatically convert your \LaTeX\ source files to machine-readable
+% XML with semantic markup. This will facilitate future research that
+% uses the ACL proceedings themselves as a corpus.
+%
+% We encourage you to submit a ZIP file of your \LaTeX\ sources along
+% with the camera-ready version of your paper. We will then convert them
+% to XML automatically, using the LaTeXML tool
+% (\url{http://dlmf.nist.gov/LaTeXML}). LaTeXML has \emph{bindings} for
+% a number of \LaTeX\ packages, including the ACL 2014 stylefile. These
+% bindings allow LaTeXML to render the commands from these packages
+% correctly in XML. For best results, we encourage you to use the
+% packages that are officially supported by LaTeXML, listed at
+% \url{http://dlmf.nist.gov/LaTeXML/manual/included.bindings}
+
+
+
+\subsection{Translation of non-English Terms and Examples}
+
+It is advised to supplement non-English characters and terms
+with appropriate transliterations and/or translations.
+Inline transliteration or translation can be represented in
+the following order: original transliteration ``translation''.
+
+Linguistic examples in languages other than English should normally be glossed
+and provided with an translation in English on separate lines, as illustrated in (\ref{dutch}).
+Several \LaTeX\ packages support glossed examples.
+
+\begin{examples}
+\item \label{dutch}
+\gll Dit is een Nederlands voorbeeld-je.
+This is a Dutch example-DIM.
+\glt `This is a small example in Dutch.'
+\glend
+\end{examples}
+
+
+\section*{Acknowledgements}
+
+\emph{Do not include an acknowledgements section when submitting your paper for review!}
+
+This document has been adapted from the instructions for the
+CAC2014 proceedings, which are, in turn based on those for the
+COLING 2014 proceedings, which are, in turn, based on the ACL-2014
+proceedings compiled by Alexander Koller and Yusuke Miyao,
+which are, in turn, based on the instructions for earlier ACL proceedings,
+including those for ACL-2012 by Maggie Li and Michael
+White, those from ACL-2010 by Jing-Shing Chang and Philipp Koehn,
+those for ACL-2008 by Johanna D. Moore, Simone Teufel, James Allan,
+and Sadaoki Furui, those for ACL-2005 by Hwee Tou Ng and Kemal
+Oflazer, those for ACL-2002 by Eugene Charniak and Dekang Lin, and
+earlier ACL and EACL formats. Those versions were written by several
+people, including John Chen, Henry S. Thompson and Donald
+Walker. Additional elements were taken from the formatting
+instructions of the {\em International Joint Conference on Artificial
+  Intelligence}.
+
+
+\printbibliography
+
+\end{document}
