@@ -1,0 +1,42 @@
+% Provide the legacy citation commands and redefine `\cite` to be like
+%`authoryear`'s `\parencite`.
+% For a more modern approach, it is probably better to use biblatex's choice of
+% `\autocite` and `\textcite`
+
+% TODO: It would probably better to reference biblatex's command directly instead
+%       of copy-pasting their code. (Better as in “more robust”)
+
+\ProvidesFile{acl.cbx}
+
+\RequireCitationStyle{authoryear}
+
+\DeclareCiteCommand{\cite}[\mkbibparens]
+    {\usebibmacro{prenote}}%
+    {\usebibmacro{citeindex}%
+    \usebibmacro{cite}}
+    {\multicitedelim}
+    {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\shortcite}[\mkbibparens]
+    {\usebibmacro{prenote}}%
+    {\usebibmacro{citeindex}%
+    \usebibmacro{citeyear}}
+    {\multicitedelim}
+    {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\newcite}
+    {\boolfalse{cbx:parens}}%
+    {\usebibmacro{citeindex}%
+        \iffirstcitekey%
+            {\setcounter{textcitetotal}{1}}
+            {
+                \stepcounter{textcitetotal}%
+                \textcitedelim%
+            }%
+        \usebibmacro{textcite}%
+    }%
+    {\ifbool{cbx:parens}
+        {\bibcloseparen\global\boolfalse{cbx:parens}}
+        {}%
+    }%
+    {\usebibmacro{textcite:postnote}}
