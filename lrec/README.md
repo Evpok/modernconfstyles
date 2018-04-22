@@ -12,7 +12,7 @@ Note that according to the official guidelines, using this should get you reject
 
 ## How to use
 
-  - Copy [`lrec.cls`](lrec.cls) (for the main class) and the [`lrec.cbx`](lrec.cbx), [`lrec.bbx`](lrec.bbx) and [`lrec.dbx`](lrec.dbx) files (for the biblatex style) somewhere where LaTeX will find them (the easiest is probably to use the folder of your own `.tex` file, but your preferred `.txmf` should work, too)
+  - Copy [`lrec.cls`](lrec.cls) (for the main class) and the [`lrec.cbx`](lrec.cbx), [`lrec.bbx`](lrec.bbx) and [`lrec.dbx`](lrec.dbx) files (for the biblatex style) somewhere where LaTeX will find them (the easiest is probably to use the folder of your own `.tex` file, but your preferred `.texmf` should work, too)
   - Use `\documentclass{lrec}` and `\usepackage[backend=biber, style=lrec]{biblatex}`
   - See [`xample.tex`](xample.tex) for more details about what you can do
 
@@ -27,7 +27,7 @@ Listing only changes with respect to the official template.
     In practice, it only means that instead of `\documentclass{article}\usepackage{lrec}` you have to use `\documentclass{lrec}`.
   - The title block should be typeset using `\maketitle`. The original `\maketitleabstract` is aliased to it.
   - The `\keywords` commands now actually sets keywords instead of just adding a new line and printing **keywords**. You should still be able to keep using it as in the original template, though<a href="#note1" id="noteref1">¹</a>.
-  - The `\cite`, `\newcite` and `\shortcite` commands work as advertised, but using the more explicit `\parencite` and `\textcite`and  avoiding using `\shortcite` is recommended.
+  - The `\cite`, `\newcite` and `\shortcite` commands work as advertised, but using the more explicit `\parencite` and `\textcite` and avoiding `\shortcite` is recommended.
 
 ### Added
   - The `standalone` class option will try to give you a nicer look for standalone versions of your article (such as for putting on your homepage), most notably by adding headers and page numbers (see <a href="#standalone">below</a>)

@@ -1,16 +1,16 @@
 Modern conference styles
 ========================
 
-It is no secret (but no shame either!) that many LaTeX templates offered by conference organisators are outdated and carry a lot of cruft and are therefore often incompatible with modern LaTeX technologies, including — but not limited to —
+It is no secret (but no shame either!) that many LaTeX templates offered by conference organisators carry a lot of cruft and thus often outdated, and often incompatible with modern LaTeX technologies, including — but not limited to —
 
   - [Lua(La)TeX](http://lualatex.org) and [Xe(La)TeX](http://xetex.sourceforge.net/)
   - [fontspec](https://github.com/wspr/fontspec) and [unicode-math](https://github.com/wspr/unicode-math)
   - [BibLaTeX](https://github.com/plk/biblatex/)/[Biber](http://biblatex-biber.sourceforge.net/)
 
-This repository offers alternatives to the official templates that are compatible with these and much more !
+This repository offers alternatives to official templates that are compatible with these and much more !
 
 ## Limitations
-It is a sad fact that modernization sometimes has to get rid of good old things in order to get good new things, and this is no exception.
+It is a sad fact that modernization sometimes has to get rid of good old things in order to get good new things, and this makes no exception.
 In particular, unless stated otherwise, no effort is made to preserve compatibility with legacy engines and the templates in this repository **require** the use of either LuaLaTeX of XeLaTeX for the compilation of documents and BibLaTeX/Biber for the compilation of bibliographies.
 
 Also, let us say it in capitals and pseudo-legalese, which apparently makes it official in some weird jurisdictions
@@ -25,7 +25,12 @@ SOFTWARE.
 
 Which means that nobody is guaranteeing that those templates actually comply to conferences guidelines and stylesheets and that you won't get laughed at by the second reviewer (who we all know is the worst).
 
-That said, it is not *that* a big deal, since some official conference templates don't comply with the official stylesheet either, and that some official stylesheets are known to be inconsistent.
+That said,
+
+  - We make our best efforts to stay as close as possible from the official templates and guidelines (including by painstakingly measuring resulting PDF files)
+  - It is not *that* a big deal, since
+    - Some official conference templates don't comply with their own official stylesheet either
+    - Some official stylesheets are known to be inconsistent
 
 So don't worry too much.
 
@@ -35,9 +40,8 @@ This body of work is released under your choice<a href="#note1" id="noteref1">¹
 I do try to stay as close as possible to the original templates, so this might or might not be an issue of copyright infrigement, depending on the copyright policy and moral stance you take.
 However, this is done in good faith, in the spirit of sharing tools to make life easier for authors, and in no way to harm the original template providers, nor to imply any criticism of their considerable work.
 
-The bottom line is: if you are a copyright holder and want to claim rights on anything provided here, please contact me before unleashing your lawyers.
-
+The bottom line is: if you are a copyright holder and want to claim rights on anything provided here, please contact me before unleashing your k̶r̶a̶k̶e̶n̶s̶ lawyers.
 
 ---
 
-<a id="note1" href="#noteref1">1.</a> Depending on your country, your taste and your stance on profanity.
+<a id="note1" href="#noteref1">1.</a> Depending on your country, your personal tastes and your stance on profanity.
