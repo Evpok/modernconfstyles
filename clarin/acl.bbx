@@ -1,7 +1,7 @@
 \ProvidesFile{acl.bbx}
 
 \RequireBibliographyStyle{authoryear}
-\ExecuteBibliographyOptions{maxnames=2, doi=false, isbn=false, url=false, abbreviate=false}
+\ExecuteBibliographyOptions{maxcitenames=2, doi=false, isbn=false, url=false, abbreviate=false}
 
 \defbibheading{bibliography}[\refname]{}
 % Name ordering (default is family-given/given-family)
@@ -21,14 +21,10 @@
 % Add key to entries
 % Stolen from https://tex.stackexchange.com/a/11856/8547
 \renewbibmacro*{begentry}{%
-	\printtext[brackets]{%
-		\begingroup
-			\printnames{labelname}%
-			\setunit{\nameyeardelim}%
-			\printfield{labelyear}%
-			\printfield{extrayear}%
-		\endgroup
-	}%
+    \begingroup
+        \defcounter{maxnames}{\blx@maxcitenames}%
+        \printtext[brackets]{\usebibmacro{cite}}%
+    \endgroup
 	\addspace
 }
 
