@@ -110,28 +110,29 @@
 	]
 }
 
+\RequirePackage[pagestyles]{titlesec}
 % Header and footer
 % TODO: needs more LaTeX3 idiomatism
-\RequirePackage[pagestyles]{titlesec}
-	\newpagestyle{main}{
-		\IfSubmission{
-		}[
-			\sethead{}{\ifnum\thepage>1 {\tl_use:N\g_lrec_title_tl}\fi}{}
-			\setfoot{}{\thepage}{}
-		]
-	}
-	\AtBeginDocument{
-		\pagestyle{main}
-	}
+\newpagestyle{main}{
+	\IfSubmission{
+	}[
+		\sethead{}{\ifnum\thepage>1 {\tl_use:N\g_lrec_title_tl}\fi}{}
+		\setfoot{}{\thepage}{}
+	]
+}
+\AtBeginDocument{
+	\pagestyle{main}
+}
 
-	\titleformat{\section}{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont\filcenter}{\thesection.}{1em}{}
-	\titlespacing*{\section}{0pt}{12pt minus \parskip}{3pt}
+% Section titles
+\titleformat{\section}{\normalfont\bfseries\fontsize{12pt}{14pt}\selectfont\filcenter}{\thesection.}{1em}{}
+\titlespacing*{\section}{0pt}{12pt minus \parskip}{3pt}
 
-	\titleformat{\subsection}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont\filcenter}{\thesubsection.}{1em}{}
-	\titlespacing*{\subsection}{0pt}{6pt minus \parskip}{3pt}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{11pt}{13pt}\selectfont\filcenter}{\thesubsection.}{1em}{}
+\titlespacing*{\subsection}{0pt}{6pt minus \parskip}{3pt}
 
-	\titleformat{\subsubsection}{\normalfont\bfseries\fontsize{10pt}{12pt}\selectfont\filcenter}{\thesubsubsection.}{1em}{}
-	\titlespacing*{\subsubsection}{0pt}{6pt minus \parskip}{0pt}
+\titleformat{\subsubsection}{\normalfont\bfseries\fontsize{10pt}{12pt}\selectfont\filcenter}{\thesubsubsection.}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{6pt minus \parskip}{0pt}
 
 % Set pdf metadata using hyperref
 % TODO: rework `\name` et al to make them more easily parsable and provide more metadata here
