@@ -1,11 +1,11 @@
-\ProvidesFile{acl.bbx}
+\ProvidesFile{lrec.bbx}
 
 \RequireBibliographyStyle{authoryear}
-\ExecuteBibliographyOptions{maxcitenames=2, doi=false, isbn=false, url=false, abbreviate=false}
+\ExecuteBibliographyOptions{uniquename=init, doi=false, isbn=false, url=false, abbreviate=false}
 
 \defbibheading{bibliography}[\refname]{}
 % Name ordering (default is family-given/given-family)
-\DeclareNameAlias{sortname}{given-family}
+\DeclareNameAlias{sortname}{family-given}
 % No quotes around titles
 \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{citetitle}{#1}
 \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
@@ -18,53 +18,14 @@
 
 \renewcommand*{\intitlepunct}{\space}
 
-% Add key to entries
-% Stolen from https://tex.stackexchange.com/a/11856/8547
-\renewbibmacro*{begentry}{%
-    \begingroup
-        \defcounter{maxnames}{\blx@maxcitenames}%
-        \printtext[brackets]{\usebibmacro{cite}}%
-    \endgroup
-	\addspace
-}
-
-% Non-bracketed year
-\renewbibmacro*{date+extradate}{%
-	\iffieldundef{labelyear}{%
-	}{%
-		\setunit{\addperiod\addspace}%
-		\printlabeldateextra%
-	}
-}
-
-\renewbibmacro*{date}{%
-	\iflabeldateisdate{%
-	}{%
-		\printdate%
-	}%
-}
-
-\renewbibmacro*{issue+date}{%
-	\iflabeldateisdate{%
-	}{%
-		\printfield{issue}%
-		\setunit*{\addspace}%
-		\printdate%
-	}%
-}
-
-% Quad space between year and title
-\DeclareDelimFormat{nametitledelim}{\addperiod\quad}
-
 \renewbibmacro*{journal+issuetitle}{%
 	\usebibmacro{journal}%
 	\setunit*{\addcomma\addspace}%
 	\iffieldundef{series}
 	{}
 	{\newunit
-		\printfield{series}%
-		\setunit{\addcomma\addspace}%
-	}
+	 \printfield{series}%
+	 \setunit{\addcomma\addspace}}%
 	\usebibmacro{volume+number+eid}%
 	\setunit{\addcomma\addspace}%
 	\usebibmacro{issue+date}%
@@ -106,22 +67,47 @@
 
 
 \renewbibmacro*{publisher+location+date}{%
-	\printlist{publisher}%
-	\iflistundef{location}
-		{\setunit*{\addcomma\space}}
-		{\setunit*{\addperiod\space}}%
 	\printlist{location}%
 	\setunit*{\addcomma\space}%
 	\usebibmacro{date}%
+	\iflistundef{publisher}
+		{\setunit*{\addcomma\space}}
+		{\setunit*{\addperiod\space}}%
+	\printlist{publisher}%
 	\newunit
+}
+
+
+% LanguageResource references
+\DeclareFieldFormat{islrn}{ISLRN #1}
+
+\DeclareBibliographyDriver{languageresource}{
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author}%
+	\setunit{\printdelim{nametitledelim}}\newblock
+	\usebibmacro{title}%
+	\newunit\newblock
+	\printlist{publisher}%
+	\newunit\newblock
+	\printfield{series}%
+	\newunit\newblock
+	\printfield{edition}
+	\newunit\newblock
+	\printfield{islrn}
+	\newunit\newblock
+	\usebibmacro{url}%
+	\setunit{\bibpagerefpunct}\newblock
+	\usebibmacro{pageref}%
+	\newunit\newblock
+	\usebibmacro{finentry}
 }
 
 \DeclareBibliographyDriver{article}{%
 	\usebibmacro{bibindex}%
 	\usebibmacro{begentry}%
 	\usebibmacro{author/translator+others}%
-	\printdelim{nametitledelim}
-    \newblock
+	\setunit{\printdelim{nametitledelim}}\newblock
 	\usebibmacro{title}%
 	\newunit
 	\printlist{language}%
@@ -153,62 +139,11 @@
 	\usebibmacro{finentry}%
 }
 
-\DeclareBibliographyDriver{book}{%
-    \usebibmacro{bibindex}%
-    \usebibmacro{begentry}%
-    \usebibmacro{author/editor+others/translator+others}%
-    \printdelim{nametitledelim}
-    \newblock
-    \usebibmacro{maintitle+title}%
-    \newunit
-    \printlist{language}%
-    \newunit\newblock
-    \usebibmacro{byauthor}%
-    \newunit\newblock
-    \usebibmacro{byeditor+others}%
-    \newunit\newblock
-    \printfield{edition}%
-    \newunit
-    \iffieldundef{maintitle}{%
-        \printfield{volume}%
-        \printfield{part}%
-    }{}%
-    \newunit
-    \printfield{volumes}%
-    \newunit\newblock
-    \usebibmacro{series+number}%
-    \newunit\newblock
-    \printfield{note}%
-    \newunit\newblock
-    \usebibmacro{publisher+location+date}%
-    \newunit\newblock
-    \usebibmacro{chapter+pages}%
-    \newunit
-    \printfield{pagetotal}%
-    \newunit\newblock
-    \iftoggle{bbx:isbn}{%
-        \printfield{isbn}%
-    }{}%
-    \newunit\newblock
-    \usebibmacro{doi+eprint+url}%
-    \newunit\newblock
-    \usebibmacro{addendum+pubstate}%
-    \setunit{\bibpagerefpunct}\newblock
-    \usebibmacro{pageref}%
-    \newunit\newblock
-    \iftoggle{bbx:related}{%
-        \usebibmacro{related:init}%
-        \usebibmacro{related}%
-    }{}%
-    \usebibmacro{finentry}
-}
-
 \DeclareBibliographyDriver{inproceedings}{%
 	\usebibmacro{bibindex}%
 	\usebibmacro{begentry}%
 	\usebibmacro{author/translator+others}%
-	\printdelim{nametitledelim}
-    \newblock
+	\setunit{\printdelim{nametitledelim}}\newblock
 	\usebibmacro{title}%
 	\newunit
 	\printlist{language}%
@@ -258,8 +193,7 @@
 	\usebibmacro{bibindex}%
 	\usebibmacro{begentry}%
 	\usebibmacro{author/translator+others}%
-	\printdelim{nametitledelim}
-    \newblock
+	\setunit{\printdelim{nametitledelim}}\newblock
 	\usebibmacro{title}%
 	\newunit
 	\printlist{language}%
