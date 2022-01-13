@@ -28,7 +28,7 @@
 	}{}
 }
 
-\LoadClass[a4paper, 10pt, twocolumns]{article}
+\LoadClass[a4paper, 10pt, twocolumn]{article}
 \RequirePackage[
         top=25mm,
 	bottom=25mm,
