@@ -2,7 +2,7 @@
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
 
-\ProvidesExplClass{lrec}{2017/09/23}{0.0.1}{The style for LREC conference papers and extended abstracts}
+\ProvidesExplClass{lrec}{2022/01/13}{0.0.2}{The style for LREC conference papers and extended abstracts}
 % Keep trace of submission/standalone mode
 \bool_new:N\g_lrec_submission_bool
 \bool_set_true:N\g_lrec_submission_bool
@@ -29,9 +29,13 @@
 }
 
 \LoadClass[a4paper, 10pt, twocolumns]{article}
-\RequirePackage[margin=19mm,
-                top=25mm,
-                columnsep=6.3mm]{geometry}
+\RequirePackage[
+        top=25mm,
+	bottom=25mm,
+	left=25mm,
+	right=25mm,
+        columnsep=6mm,
+]{geometry}
 
 % Other page settings
 \dim_gset:Nn\parindent{0cm}
